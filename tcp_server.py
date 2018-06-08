@@ -15,7 +15,7 @@ class MyTcpServer( TCPServer ):
             while True:
                 msg = yield stream.read_bytes( 20, partial = True )
                 print msg, 'from', address
-                #yield gen.sleep( 0.005 )
+                yield gen.sleep( 0.005 )
                 yield stream.write( msg[::-1] )
                 if msg == 'over':
                     stream.close()
